@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+
+{% csrf_token %}
+
+
+{% block message %}
+    <br><br><br><br>
+    <div class="container">
+    {% if messages %}
+    <div class='row'>
+    <div class= 'col-sm-6 col-sm-offset-3' >
+          {% for message in messages %}
+      <p>{% if message.tags == "success" %} class="alert alert-success" 
+             {% endif %}>{{ message }}</p>
+      
+        
+           {% endfor %} 
+        {% endif %} 
+ 
+</div>
+</div>
+</div>
+ {% endblock %}
+
+  {% block step1 %}
+
+  {{ message }}
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+ <tr>
+  <td> 
+    <div id="wizard" class="swMain">
+            <ul class="anchor">
+              <li><a href="#step-1" class="selected" isdone="1" rel="1">
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 1<br>
+                       <small>Generate keys and test Crypto</small>
+                    </span>
+                      </a></li>
+              <li><a href="#step-2" class="disabled" isdone="0" rel="2">
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 2<br>
+                       <small>test SSL / TLS negotiation</small>
+                    </span>
+                </a></li>
+              <li><a href="#step-3" class="disabled" isdone="0" rel="3">
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 3<br>
+                       <small>generate server keys</small>
+                    </span>                   
+                 </a></li>
+              <li><a href="#step-4" class="disabled" isdone="0" rel="4">
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 4<br>
+                       <small>create server config file</small>
+                    </span>                   
+                </a></li>
+            </ul>
+             <script>
+            //   var shellscript = new File("volumes/storage/_codework/erikdd/src/static/scripts/openvpn_install.sh");
+            //   shellscript.execute("openvpn --genkey --secret key");
+           </script>
+                              
+            
+            
+      <div style="height: 312px;" class="stepContainer"><div style="display: none;" class="content" id="step-1">  
+                <h2 class="StepTitle">Step 1 Content</h2>
+                <ul type="disk">
+                 
+                </ul>
+                
+                <div>
+                  
+                  <input type="submit" class="btn btn-info pull-right 10" id="gen_keys"  
+                   action="/step1/"  value="Generate">
+                  
+
+
+
+                </div>
+            </div><div style="display: block;" class="content" id="step-2">
+                <h2 class="StepTitle">Step 2 Content</h2> 
+              
+            </div><div style="display: none;" class="content" id="step-3">
+                <h2 class="StepTitle">Step 3 Content</h2> 
+                <p>
+                <form method="POST" >
+                {% csrf_token %}
+                <input type="text" name="textfield" action="." id="vars-data-promt">
+
+                <button type="submit" action=".">Upload text</button>
+                </form>
+                </p>
+                <p>
+                
+                </p>                                
+            </div><div style="display: none;" class="content" id="step-4">
+                <h2 class="StepTitle">Step 4 Content</h2> 
+                
+               
+            </div></div>
+   
+  </td>
+ </tr>
+</tbody>
+</table>
+
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load account %}
+{% user_display user as user_display %}
+{% load i18n %}{% autoescape off %}
+
+
+{% blocktrans with current_site.name as site_name %}
+Somebody with the username: {{ user_display }} at {{ site_name }} has given this as their email address. Please confirm it at the link below or ignore the message:
+
+{{ activate_url }}
+
+
+{% endblocktrans %}{% endautoescape %}
