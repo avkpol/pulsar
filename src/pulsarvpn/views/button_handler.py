@@ -72,7 +72,7 @@ def runStep3Process(request):
 					if os.path.isfile(key):
 
 						return HttpResponse(successMsg)
-					return HttpResponse(successMsg2)
+					return HttpResponse(dangerMsg)
 									
 		except IndexError:
 			return HttpResponse(warnMsg2)
