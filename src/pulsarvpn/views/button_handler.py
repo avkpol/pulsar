@@ -1,17 +1,10 @@
-from django.shortcuts import render_to_response, HttpResponse, HttpResponseRedirect, RequestContext
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.shortcuts import  HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest, JsonResponse, HttpResponse
 
-from django.contrib import messages
-from tempfile import NamedTemporaryFile
 import subprocess
 from subprocess import Popen, PIPE
 
-
 import json
-import sys
 import fileinput
 import os
 import os.path
