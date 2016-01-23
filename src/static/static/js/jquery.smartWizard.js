@@ -28,6 +28,7 @@
             $(".buttonNext").unbind("click").click(function (e) {
                 e.preventDefault();
                 $("#wizard").smartWizard("goForward");
+
             });
         }
 
@@ -373,13 +374,15 @@ function SmartWizard(target, options) {
 
     SmartWizard.prototype.goForward = function(){
         var nextStepIdx = this.curStepIdx + 1;
+        var step = 1
         if (this.steps.length <= nextStepIdx){
             if (! this.options.cycleSteps){
                 return false;
             }
             nextStepIdx = 0;
         }
-        _loadContent(this, nextStepIdx);
+        _loadContent(this, nextStepIdx );
+        location.hash= step + nextStepIdx
     };
 
     SmartWizard.prototype.goBackward = function(){

@@ -55,7 +55,7 @@ INSTALLED_APPS = (
 )
 SITE_ID = 1
 LOGIN_URL ='/accounts/login/'
-LOGIN_REDIRECT_URL = '/step1'
+LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email" #(="username" | "email" | "username_email")
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True # (=False)

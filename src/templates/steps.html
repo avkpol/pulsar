@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+  {% block steps %}
+<!-- <div id ="jmessage" role="alert" class='col-sm-6 col-sm-offset-3'></div> -->
+
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+ <tr>
+  <td> 
+    <div id="wizard" class="swMain">
+            <ul class="anchor">
+              <li><a href="#step-1" class="selected" isdone="1" rel="1">
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 1<br>
+                       <small>Generate keys and test Crypto</small>
+                    </span>
+                      </a></li>
+              <li><a href="#step-2" class="disabled" isdone="0" rel="2">
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 2<br>
+                       <small>test SSL / TLS negotiation</small>
+                    </span>
+                </a></li>
+              <li><a href="#step-3" class="disabled" isdone="0" rel="3">
+             
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 3<br>
+                       <small>generate server keys</small>
+                    </span> 
+                             
+                 </a></li>
+              <li><a href="#step-4" class="disabled" isdone="0" rel="4">
+                    <label class="stepNumber"></label>
+                    <span class="stepDesc">
+                       Step 4<br>
+                       <small>create server config file</small>
+                    </span>                   
+                </a></li>
+            </ul>
+    <div style="height: 312px;" class="stepContainer">
+<!--STEP1  ######################################################################################-->
+          <div style="display: none;" class="content" id="step-1">  
+                <h2 class="StepTitle">Step 1 Generate and Test Key </h2>
+                <ul type="disk">
+                  
+                </ul>
+                <p><h3>Welcome to Openvpn configuration page !</h3>
+                </p>
+                <p>
+               This wizard will help you to set up and configurate openvpn
+                </p>
+                <p>
+                To generate key please press "Generate key" button  
+                </p>                
+                <div><br><br><br>
+                 <div class="row"> 
+                    <div class="col-md-3 ">
+                      <button type="submit" method="POST"  id="s1-btn"
+                      class="form-inline btn btn-info pull-left">Generate</button>
+                    </div>
+                    <div class="col-md-6 " id ="jmessage" role="alert" ></div>
+                   </div>       
+              <!--   
+              <div class="row"> 
+                <a id="submitButton" href="#" class="col-sm-3 progress-button">Generate and test</a>
+                <div id ="jmessage" role="alert" class='col-sm-7 '></div>
+              </div> -->
+            </div>
+          </div>
+<!--STEP2 ######################################################################################-->            <div style="display: block;" class="content" id="step-2">
+                <h2 class="StepTitle">Step 2 Content</h2> 
+            </div>
+<!--STEP3 ######################################################################################-->                
+          <div style="display: none;" class="content" id="step-3">
+                <h2 class="StepTitle">Step 3 Content</h2> 
+
+               <form class="form-horizontal" id="vars-data-form" >
+                 
+                   <div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label">Country</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="k-count" class="form-control" 
+                      placeholder="Your country short name,e.g US " pattern="^[_A-Z]{1,}$" maxlength="2" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label">Province</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="k-prov" class="form-control" 
+                       placeholder="Your province" required>
+                    </div>
+                  </div><div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="k-city" class="form-control" 
+                      placeholder="Your city" required>
+                    </div>
+                  </div><div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label">Organization</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="k-org" class="form-control" 
+                       placeholder="Your organization name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label">key_cn</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="k-cn" class="form-control"  
+                      placeholder="Create unique name for your key">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-6">
+                      <input type="email" id="k-email"class="form-control" 
+                       placeholder="Email" data-error=" That email address is invalid!" required>
+                    </div>
+                  </div>
+                
+                    <div class="row"> 
+                    <div class="col-md-3 ">
+                      <button type="submit" method="POST"  id="s3-btn"
+                      class="form-inline btn btn-info pull-left">Generate</button>
+                    </div>
+                    <div class="col-md-6 " id ="st3-message" role="alert" ></div>
+                   </div>      
+                </form>
+             </div>     
+ <!--STEP4 ######################################################################################-->         
+            <div style="display: none;" class="content" id="step-4">
+                <h2 class="StepTitle">Step 4 Content</h2> 
+                <form class="form-horizontal" id="server-conf-form">
+                 
+                   <div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label"> Server port</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="sp" class="form-control" 
+                      placeholder="Server port number, e.g. 80 " pattern="^[0-9]{0,99999}$" maxlength="5" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label">Server IP range</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="sipr" class="form-control" 
+                       placeholder="Server IP range, e.g. 192.168.0.1" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required>
+                    </div>
+                  </div><div class="form-group">
+                    <label for="inputText" class="col-sm-2 control-label">Server IP mask</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="sipm" class="form-control" 
+                      placeholder="Server IP mask, e.g. 255.255.255.0" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                   <div class="col-md-3">
+                      <button type="submit" method="POST" id="s4-btn"
+                      class="form-inline btn btn-info pull-right">Fill in</button>
+                    </div>
+                    <div class="col-md-6" id ="st4-message" role="alert"></div>
+                  </div>
+                  </form>
+                </div>
+        </div>
+     
+  </td>
+ </tr>
+</tbody>
+</table>
+
+
+
+{% endblock %}

@@ -1,18 +1,16 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from pulsarvpn.views.step_views import step1, step3, welcome
-from pulsarvpn.views.button_handler import runKeyGenProcess
-
+from pulsarvpn.views.step_views import steps
+from pulsarvpn.views.button_handler import runKeyGenProcess, runStep3Process, runStep4Process
 
 
 
 urlpatterns = patterns(
     '',
     (r'^accounts/', include('allauth.urls')),
-    url(r'^welcomepage/$', welcome, name='welcome'),
-    url(r'^step1/$', step1, name='step1'),
-    # url(r'^step2/$', generate_keys, name='step2'),
-    # url(r'^profile/$', user_profile, name='profile'),
+    
+    url(r'^$', steps, name='steps'),
     url(r'^run-key-gen-process/$', runKeyGenProcess),
-    url(r'^step3/$', step3, name='step3'),
+    url(r'^run-step3-process/$',runStep3Process, name='runStep3Process'),
+    url(r'^run-step4-process/$',runStep4Process, name='runStep4Process'),
 )    
